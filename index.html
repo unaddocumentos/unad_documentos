@@ -1,0 +1,107 @@
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Verificación de Documentos - UNAD</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f5f5f5;
+      margin: 0;
+      padding: 20px;
+      color: #333;
+    }
+    header {
+      background-color: #00324D;
+      padding: 20px;
+      text-align: center;
+      color: white;
+    }
+    .documento {
+      background-color: white;
+      border-radius: 8px;
+      padding: 20px;
+      margin: 20px 0;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+    }
+    footer {
+      text-align: center;
+      font-size: 0.9em;
+      color: #777;
+      margin-top: 50px;
+    }
+    input[type="text"] {
+      padding: 10px;
+      width: 300px;
+      margin-top: 20px;
+    }
+    button {
+      padding: 10px 20px;
+      background-color: #FF9900;
+      color: white;
+      border: none;
+      cursor: pointer;
+      margin-top: 15px;
+    }
+    .recaptcha-box {
+      display: inline-block;
+      margin-top: 15px;
+      padding: 10px;
+      background: #f9f9f9;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      text-align: left;
+    }
+    .recaptcha-box input {
+      transform: scale(1.5);
+      margin-right: 10px;
+    }
+    .recaptcha-box label {
+      font-size: 1em;
+    }
+  </style>
+</head>
+<body>
+<header>
+  <img src="logo-unad.png" alt="Logo UNAD" style="max-width: 200px; margin-bottom: 10px;">
+  <h1>Verificación de Código de Documento</h1>
+  <p>Universidad Nacional Abierta y a Distancia - UNAD</p>
+</header>
+
+<main style="text-align:center;">
+  <p>Ingrese el código de verificación para acceder al documento:</p>
+  <input type="text" id="codigo" placeholder="Código de verificación"><br>
+
+  <div class="recaptcha-box">
+    <input type="checkbox" id="captcha">
+    <label for="captcha">No soy un robot</label>
+  </div><br>
+
+  <button onclick="validarCodigo()">Verificar</button>
+</main>
+
+<footer>
+  Universidad Nacional Abierta y a Distancia UNAD - Colombia © 2025
+</footer>
+
+<script>
+function validarCodigo() {
+  const codigoIngresado = document.getElementById('codigo').value.trim();
+  const captchaChecked = document.getElementById('captcha').checked;
+  const codigoCorrecto = '20240710AB93XZLQ';
+
+  if (!captchaChecked) {
+    alert('Debe confirmar que no es un robot antes de continuar.');
+    return;
+  }
+
+  if (codigoIngresado === codigoCorrecto) {
+    window.location.href = 'http://www.titulounad.lat/';
+  } else {
+    alert('Código incorrecto. Intente nuevamente.');
+  }
+}
+</script>
+</body>
+</html>
